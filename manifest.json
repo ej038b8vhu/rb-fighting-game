@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "version": "1.0",
+  "name": "Pixel Game",
+  "description": "SamuraiMack vs Kenji",
+  "icons": {
+    "16": "/oak_woods/background/wood.png",
+    "90": "/oak_woods/background/wood.png"
+},
+  "action": {
+      "default_popup": "/index.html",
+      "default_icon": "/oak_woods/background/wood.png"
+  },
+  "permissions": [
+      "tabs"
+  ]
+}

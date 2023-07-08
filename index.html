@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="IE=edge"
+  >
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>Pixel Game</title>
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+    rel="stylesheet"
+  >
+  <link
+    rel="icon"
+    href="/oak_woods/background/wood.png"
+  >
+</head>
+
+<style>
+  * {
+    box-sizing: border-box;
+    color: #eee;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.3rem;
+    text-align: center;
+    user-select: none;
+  }
+
+  body {
+    width: 520px;
+    height: 300px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #101010;
+    transform: scale(.5);
+  }
+
+  .health {
+    transition: width .3s ease-in;
+  }
+
+  /* for non-extension tab */
+  @media (min-width: 600px) {
+    body {
+      width: unset;
+      min-height: 100vh;
+      transform: unset;
+    }
+  }
+</style>
+
+<body>
+  <!-- container div -->
+  <div style="position: relative; display: inline-block;">
+    <!-- health bar container -->
+    <div style="position:absolute; display: flex; align-items: center; width: 100%; padding: 20px;">
+      <!-- player health -->
+      <div
+        style="position:relative; width: 100%; display:flex; justify-content: flex-end; border: 4px solid #eee; border-right: none;"
+      >
+        <div style="height: 50px; background-color: rgba(150, 0, 0, .7); width: 100%"></div>
+        <div
+          id="playerHealth"
+          class="health"
+          style="position: absolute; background-color: #818CF8; top:0; bottom: 0; right: 0; width: 100%;"
+        >
+        </div>
+      </div>
+      <!-- timer & new game-->
+      <button
+        id="timer"
+        style="background-color: transparent; width: 100px; height: 80px; border: 5px solid #eee; font-weight: bold; font-size: 1.4rem;flex-shrink: 0; display: flex; align-items: center; justify-content: center;"
+      >
+      </button>
+      <!-- enemy health -->
+      <div
+        style="position:relative; width: 100%; display:flex; justify-content: flex-end; border: 4px solid #eee; border-left: none;"
+      >
+        <div style="height: 50px; background-color: rgba(150, 0, 0, .7); width: 100%;"></div>
+        <div
+          id="enemyHealth"
+          class="health"
+          style="position: absolute; background-color: #818CF8; top:0; bottom: 0; left: 0; right: 0;"
+        >
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <div
+      id="displayText"
+      style="position: absolute; display: none; justify-content: center; width: 100%; bottom: 250px;"
+    >
+    </div>
+    <h5 style="position: absolute; bottom: 0; left: 1em; margin: 1em">samurai Mack</h5>
+    <h5 style="position: absolute; bottom: 0; right: 1em; margin: 1em">Kenji</h5>
+    <canvas></canvas>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/classes.js"></script>
+  <script src="/index.js"></script>
+</body>
+
+</html>
