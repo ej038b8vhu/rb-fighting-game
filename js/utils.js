@@ -1,12 +1,14 @@
-const timerBtn = document.querySelector('#timer');
+const timerBtn = document.querySelector("#timer");
 
 //reload get new game
-timerBtn.addEventListener('click', () => {
+timerBtn.addEventListener("click", () => {
   //start new game for browser
   if (!+timerBtn.innerHTML) history.go(0); // or "/"" to reload current page
 
   //extension tab refresh
-  chrome.tabs?.reload(tabs[0].url);
+  chrome.tabs.query({ active: false, currentWindow: false }, function (tabs) {
+    if (!+timerBtn.innerHTML) chrome.tabs.reload(tabs[0].id);
+  });
 });
 
 //detect attack range & detect for collision
@@ -27,21 +29,21 @@ function rectangularCollision({ rectangule1, rectangule2 }) {
 function determineWinner({ player, enemy, timerId }) {
   clearTimeout(timerId);
 
-  const displayText = document.querySelector('#displayText');
+  const displayText = document.querySelector("#displayText");
 
-  displayText.style.display = 'flex';
+  displayText.style.display = "flex";
   if (player.health === enemy.health) {
-    displayText.innerHTML = 'Tie';
+    displayText.innerHTML = "Tie";
   } else if (player.health > enemy.health) {
-    displayText.innerHTML = 'Player 1 wins';
+    displayText.innerHTML = "Player 1 wins";
   } else if (enemy.health > player.health) {
-    displayText.innerHTML = 'Player 2 wins';
+    displayText.innerHTML = "Player 2 wins";
   }
 
   if (displayText.innerHTML) {
-    timerBtn.style.fontSize = '.7em';
-    timerBtn.style.cursor = 'pointer';
-    timerBtn.style.backgroundColor = 'rgba(100, 0, 0, .5)';
+    timerBtn.style.fontSize = ".7em";
+    timerBtn.style.cursor = "pointer";
+    timerBtn.style.backgroundColor = "rgba(100, 0, 0, .5)";
     timerBtn.innerHTML = `New
     Game`;
   }
@@ -54,7 +56,7 @@ function decreaseTimer() {
   if (timer > 0) {
     timerId = setTimeout(decreaseTimer, 1000);
     timer--;
-    document.querySelector('#timer').innerHTML = timer;
+    document.querySelector("#timer").innerHTML = timer;
   }
   if (timer === 0) {
     determineWinner({ player, enemy, timerId });
