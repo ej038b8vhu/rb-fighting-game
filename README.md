@@ -1,6 +1,11 @@
 # Pixel fighting game
 
-#### practice of OOP 
+#### Practice OOP 
+
+![fighting](https://github.com/ej038b8vhu/rb-fighting-game/assets/97674389/74f7acba-578d-43d2-8951-9b4add43b346)
+
+
+
 
 - [itch](https://itch.io/game-assets)
   - assets collections
